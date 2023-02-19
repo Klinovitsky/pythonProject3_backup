@@ -17,7 +17,7 @@ dt = datetime.datetime.now()
 # Можно использовать карнентдейт как название папки архива
 currentdate = dt.strftime('%Y_%m_%d-%H%M')
 # эта команда зачем-то создавала папку в корне диска "С"
-#os.mkdir('c:/_to' + currentdate)
+# os.mkdir('c:/_to' + currentdate)
 
 for org in whatbackup:
     print(org + " копирование...")

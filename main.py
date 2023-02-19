@@ -15,7 +15,7 @@ whatbackup = ["Folder_01",
 # по умолчанию должен быть создан каталог c:/_to/
 dt = datetime.datetime.now()
 # Можно использовать карнентдейт как название папки архива
-currentdate = dt.strftime('%Y_%m_%d-%H%M')
+currentdate = dt.strftime('%Y_%m_%d_%H%M')
 # эта команда зачем-то создавала папку в корне диска "С"
 # os.mkdir('c:/_to' + currentdate)
 
@@ -38,19 +38,11 @@ for name in names:
         # os.system('"C:\Program Files\7-Zip\7z.exe" a -tzip -mx5 -r0')
 
         zip_options = "a -tzip -mx5 -r0"
-        zip_target_path = "c:/_to/" + currentdate
+        target_path = "c:/_to/" + currentdate + "_bak"
         # + ' ' - это добавлял т.к. без пробелов между опциями 7-зип выдавал ошибку
-        os.system(r'"C:\Program Files\7-Zip\7z.exe"' + ' ' + zip_options + ' ' + zip_target_path + ' ' + pathtodata)
+        os.system(r'"C:\Program Files\7-Zip\7z.exe"' + ' ' + zip_options + ' ' + target_path + ' ' + pathtodata)
 
-        # Рабочая строка. Ошибка на приписку name name, убрал - ошибка ушла
-        # os.system(r'"C:\Program Files\7-Zip\7z.exe" a -tzip -mx5 -r0 c:\_to\archive.zip c:\_from')
-
-        print("Name: ", name)
-        print("Currentdate: ", currentdate)
-        print("org: ", org)
-
-# Готово!
-print("Готово!")
+        print("Готово! Резервное копирование завершено: ", target_path)
 
 #7z a -tzip -mx5 -r0 c:\_to\archive.zip c:\_from
 # в данном примере мы создадим zip-архив с уровнем компрессии 5;
